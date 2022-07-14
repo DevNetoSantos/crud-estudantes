@@ -1,31 +1,24 @@
 import { NextApiHandler } from "next";
-import prisma from '../../../instances/prisma';
+import api from "../../../services/api";
 
 
 // inserting new user
 const handlerPost: NextApiHandler = async (req, res) => {
   const { name, email, city } = req.body;
 
-  let newUser = await prisma.user.create({
-    data: {
-      name: name,
-      email: email,
-      city: city
-    }
+  const newUser = await api.addUser(name, email, city)
+  .catch((error) => {
+    res.json({error: 'Usuário ja existe.'})
   });
-  res.status(201).json({user: newUser}); 
+  
+  if(newUser) {
+    res.status(201).json({user: newUser});
+  }
 }
 
 //Getting all users
 const handlerGet: NextApiHandler = async (req, res) => {
-  const users = await prisma.user.findMany({
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      city: true
-    }
-  });
+  const users = await api.getAllUsers();
   res.status(200).json({users});
 }
 

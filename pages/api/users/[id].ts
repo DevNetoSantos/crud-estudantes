@@ -35,6 +35,18 @@ const handlerPut: NextApiHandler =  async (req, res) => {
   }
 }
 
+const handlerDelete: NextApiHandler = async (req, res) => {
+  const { id } = req.query;
+  await prisma.user.delete({
+    where: {
+      id: parseInt(id as string)
+    }
+  }).catch((error) => {
+    res.json({error: 'Usuário não encontrado.'})
+  })
+  res.json({delete: true});
+}
+
 const handler: NextApiHandler = async (req, res) => {
   switch(req.method) {
     case 'GET':
@@ -42,6 +54,9 @@ const handler: NextApiHandler = async (req, res) => {
       break;
     case 'PUT':
       handlerPut(req, res);
+      break;
+    case 'DELETE':
+      handlerDelete(req, res);
       break;
   }
 };

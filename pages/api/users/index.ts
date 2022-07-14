@@ -16,7 +16,7 @@ const handlerPost: NextApiHandler = async (req, res) => {
   res.status(201).json({user: newUser}); 
 }
 
-//getting all users
+//Getting all users
 const handlerGet: NextApiHandler = async (req, res) => {
   const users = await prisma.user.findMany({
     select: {

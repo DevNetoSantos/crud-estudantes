@@ -1,8 +1,19 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {useEffect} from 'react'
+import  Layout  from '../components/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useEffect(()=>{
+    import("bootstrap/dist/js/bootstrap" as string);
+  },[]);
+
+  return(
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 export default MyApp

@@ -45,7 +45,7 @@ const Home = ({ users }: Props) => {
 }
 
 export const getServerSideProps = async () => {
-  const users = await api.getAllUsers();
+  const users = await api.getAllUsers(0);
 
   return {
     props: {

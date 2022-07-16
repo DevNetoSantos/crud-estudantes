@@ -1,13 +1,23 @@
 import prisma from '../instances/prisma';
 
 export default {
-  getAllUsers: async () => {
+  getAllUsers: async (page: number) => {
+    let take = 2;
+    let skip = 0;
+    if(page) {
+      skip = (page -1) * take; 
+    }
     const users = await prisma.user.findMany({
+      skip, //Quantidade vai pular
+      take, // Quantidade vai pegar
       select: {
         id: true,
         name: true,
         email: true,
         city: true
+      },
+      orderBy: {
+        id: 'asc'
       }
     });
 

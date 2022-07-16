@@ -18,7 +18,8 @@ const handlerPost: NextApiHandler = async (req, res) => {
 
 //Getting all users
 const handlerGet: NextApiHandler = async (req, res) => {
-  const users = await api.getAllUsers();
+  const { page } = req.query;
+  const users = await api.getAllUsers(parseInt(page as string));
   res.status(200).json({users});
 }
 

@@ -28,7 +28,7 @@ const Header = () => {
           <ul className='navbar-nav ms-auto text-center'>
             <li className='nav-item'>
               <Link href={'/cadastro'}>
-                <button className='btn btn-primary'>Cadastrar</button>
+                <button className='btn btn-primary'>Register</button>
               </Link>
             </li>
           </ul>

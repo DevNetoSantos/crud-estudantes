@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
   return(
     <div className={styles.container}>
       <Header />
-      <main>{children}</main>
+      <main className={`container ${styles.containerMain}`}>{children}</main>
       <Footer />
     </div>
   );

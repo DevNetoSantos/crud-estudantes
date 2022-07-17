@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import axios from 'axios';
+import { useRouter } from 'next/router'
 
 interface IFormInputs {
   name: string;
@@ -18,12 +19,20 @@ const schema = yup.object({
 
 
 const Cadastro = () => {
+  let router = useRouter()
 
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   })
   
-  const onSubmit = (data: IFormInputs) => axios.post('/api/users', data);
+  const onSubmit = (data: IFormInputs) => axios.post('/api/users', data)
+  .then(()=>{
+    console.log('user adicionado com sucesso.')
+    router.push('/')
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
 
   return(
     <div className={styles.containerCadastro}>

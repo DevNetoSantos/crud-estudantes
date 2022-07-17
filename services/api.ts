@@ -2,7 +2,7 @@ import prisma from '../instances/prisma';
 
 export default {
   getAllUsers: async (page: number) => {
-    let take = 2;
+    let take = 10;
     let skip = 0;
     if(page) {
       skip = (page -1) * take; 

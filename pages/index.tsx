@@ -3,6 +3,8 @@ import api from '../services/api';
 import {User} from '../types/User';
 import Link from 'next/link';
 import axios from 'axios';
+import {FaRegEdit} from 'react-icons/fa'
+import {RiDeleteBin6Line} from 'react-icons/ri'
 
 type Props = {
   users: User[];
@@ -23,8 +25,7 @@ const Home = ({ users }: Props) => {
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">City</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -36,13 +37,12 @@ const Home = ({ users }: Props) => {
                   <td>{item.email}</td>
                   <td>{item.city}</td>
                   <td>
-                    <button className='btn btn-danger' onClick={() =>deleteUser(item.id)}>Delete</button>
-                  </td>
-                  <td>
+                    <RiDeleteBin6Line className={styles.del} onClick={() =>deleteUser(item.id)}/>
+                    
                     <Link href={{pathname: `/editar/${item.id}`}}>
-                      <button className='btn btn-primary'>Edit</button>
+                      <FaRegEdit className={styles.put}/>
                     </Link>
-                  </td> 
+                  </td>
                 </tr>
               </>
             ))}

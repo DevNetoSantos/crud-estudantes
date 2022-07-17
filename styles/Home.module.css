@@ -5,3 +5,19 @@
 .table {
   margin-top: 40px;
 }
+
+.del {
+  width: 25px;
+  height: 25px;
+  color: red;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.put {
+  width: 25px;
+  height: 25px;
+  color: blue;
+  cursor: pointer;
+  margin-left: 5px;
+}

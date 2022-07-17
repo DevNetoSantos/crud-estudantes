@@ -28,7 +28,7 @@ const Editar = () => {
   })
 
   useEffect(()=>{
-    axios.get(`/api/users/editar/${useID}`)
+    axios.get(`/api/users/${useID}`)
     .then((response)=>{
       reset(response.data);
     })

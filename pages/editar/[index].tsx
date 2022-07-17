@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface IFormInputs {
   name: string;
@@ -16,26 +18,29 @@ const schema = yup.object({
   city: yup.string().required().min(2)
 }).required();
 
-
 const Editar = () => {
+  const { query } = useRouter()
+  const  useID  = query.index
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   })
 
-  /*useEffect(()=>{
-    axios.get(`/api/users/${id}`)
-    .then((res) =>{
-      reset(res.data)
+  useEffect(()=>{
+    axios.get(`/api/users/editar/${useID}`)
+    .then((response)=>{
+      reset(response.data);
     })
-  })*/
+  }, [])
   
-  const onSubmit = (data: IFormInputs) => axios.put(`/api/users/`, data)
+  const onSubmit = (data: IFormInputs) => axios.put(`/api/users/${useID}`, data)
   .then(()=>{
-    console.log('user adicionado com sucesso.')
+    console.log('user edit com sucesso.')
+    alert('successful editor user')
   })
   .catch((error)=>{
     console.log(error)
+    alert('Error, tente novamente.')
   })
 
   return(

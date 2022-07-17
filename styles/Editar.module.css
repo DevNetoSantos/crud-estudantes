@@ -1,0 +1,26 @@
+.containerEditar {
+  min-height: calc(100vh - 172px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainForm {
+  background-color: #EEE;
+  padding: 50px;
+  border-radius: 40px;
+}
+
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  width: 280px;
+}
+
+.btnEditar {
+  text-align: center;
+  margin-top: 15px;
+}

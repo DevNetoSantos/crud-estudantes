@@ -1,5 +1,5 @@
 .containerHome {
-  height: calc(100vh - 212px);
+  min-height: calc(100vh - 212px);
 }
 
 .table {

@@ -19,6 +19,7 @@ const schema = yup.object({
 }).required();
 
 const Editar = () => {
+  let router = useRouter()
   const { query } = useRouter()
   const  useID  = query.index
 
@@ -36,7 +37,7 @@ const Editar = () => {
   const onSubmit = (data: IFormInputs) => axios.put(`/api/users/${useID}`, data)
   .then(()=>{
     console.log('user edit com sucesso.')
-    alert('successful editor user')
+    router.push('/')
   })
   .catch((error)=>{
     console.log(error)

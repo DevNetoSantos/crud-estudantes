@@ -5,15 +5,21 @@ import Link from 'next/link';
 import axios from 'axios';
 import {FaRegEdit} from 'react-icons/fa'
 import {RiDeleteBin6Line} from 'react-icons/ri'
+import { useRouter } from 'next/router';
 
 type Props = {
   users: User[];
 }
 
 const Home = ({ users }: Props) => {
+  let router = useRouter()
 
   const deleteUser = (id: number) => {
     axios.delete(`/api/users/${id}`)
+    .then(()=>{
+      console.log('delete com sucesso.')
+      router.push('/')
+    })
   }
 
   return(

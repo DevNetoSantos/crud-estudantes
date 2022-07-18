@@ -13,10 +13,10 @@ const handlerGet: NextApiHandler = async (req, res) => {
 }
 
 const handlerPut: NextApiHandler =  async (req, res) => {
-  const { name, city } = req.body;
+  const { name, city, email } = req.body;
   const { id } = req.query;
   
-  const updateUser = await api.getPutUser(name, city, parseInt(id as string));
+  const updateUser = await api.getPutUser(name, city, email, parseInt(id as string));
 
   if(updateUser) {
     res.json({updateUser});

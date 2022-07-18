@@ -46,14 +46,15 @@ export default {
     return user;
   },
 
-  getPutUser: async (name: string, city: string, id: number) => {
+  getPutUser: async (name: string, city: string, email: string, id: number) => {
     const updateUser = await prisma.user.update({
       where: {
         id: id
       },
       data: {
         name: name,
-        city: city
+        city: city,
+        email: email
       }
     });
 

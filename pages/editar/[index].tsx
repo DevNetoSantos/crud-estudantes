@@ -23,14 +23,16 @@ const Editar = () => {
   const { query } = useRouter()
   const  useID  = query.index
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<IFormInputs>({
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm<IFormInputs>({
     resolver: yupResolver(schema)
   })
 
   useEffect(()=>{
     axios.get(`/api/users/${useID}`)
-    .then((response)=>{
-      reset(response.data);
+    .then((res)=>{
+      setValue('name', res.data.user.name)
+      setValue('email', res.data.user.email)
+      setValue('city', res.data.user.city)
     })
   }, [])
   

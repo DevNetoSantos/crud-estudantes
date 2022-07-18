@@ -23,36 +23,36 @@ const Home = ({ users }: Props) => {
   }
 
   return(
-  <div className={`${styles.containerHome}`}>
-      <table className={`table table-striped table-hover ${styles.table}`}>
-        <thead className='table-dark'>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">City</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            {users.map((item, index)=> (
-              <tr key={index}>
-                <th scope="row">{item.id}</th>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-                <td>{item.city}</td>
-                <td>
-                  <RiDeleteBin6Line className={styles.del} onClick={() =>deleteUser(item.id)}/>
-                  
-                  <Link href={{pathname: `/editar/${item.id}`}}>
-                    <FaRegEdit className={styles.put}/>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+    <div className={`${styles.containerHome}`}>
+        <table className={`table table-striped table-hover ${styles.table}`}>
+          <thead className='table-dark'>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">City</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+              {users.map((item, index)=> (
+                <tr key={index}>
+                  <th scope="row">{item.id}</th>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.city}</td>
+                  <td>
+                    <RiDeleteBin6Line className={styles.del} onClick={() =>deleteUser(item.id)}/>
+                    
+                    <Link href={{pathname: `/editar/${item.id}`}}>
+                      <FaRegEdit className={styles.put}/>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
   );
 }
 

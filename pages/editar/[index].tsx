@@ -38,12 +38,11 @@ const Editar = () => {
   
   const onSubmit = (data: IFormInputs) => axios.put(`/api/users/${useID}`, data)
   .then(()=>{
-    console.log('user edit com sucesso.')
     router.push('/')
   })
   .catch((error)=>{
     console.log(error)
-    alert('Error, tente novamente.')
+    alert('Error no servidor recarregue a página.')
   })
 
   return(

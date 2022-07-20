@@ -16,13 +16,13 @@ const handlerPut: NextApiHandler =  async (req, res) => {
   const { name, city, email } = req.body;
   const { id } = req.query;
   
-  const updateUser = await api.getPutUser(name, city, email, parseInt(id as string));
+  const updateUser = await api.getPutUser(name, city, email, parseInt(id as string))
+  .catch(()=>{
+    res.json({error: 'Não foi possível alterar dados.'})
+  })
 
   if (updateUser) {
     res.json({updateUser})
-  } 
-  else {
-    res.json({error: 'Não foi possível alterar dados.'});
   }
 }
 
@@ -30,10 +30,10 @@ const handlerDelete: NextApiHandler = async (req, res) => {
   const { id } = req.query;
 
   await api.deleteUser(parseInt(id as string))
- .catch((error) => {
+ .catch(() => {
     res.json({error: 'Usuário não encontrado.'})
   })
-   res.json({delete: true});
+   res.json({});
   }
 
 const handler: NextApiHandler = async (req, res) => {

@@ -42,7 +42,7 @@ const Editar = () => {
   })
   .catch((error)=>{
     console.log(error)
-    alert('Error no servidor recarregue a página.')
+    alert('Este email já está cadastrado.')
   })
 
   return(

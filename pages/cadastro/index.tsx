@@ -32,6 +32,7 @@ const Cadastro = () => {
   })
   .catch((error)=>{
     console.log(error)
+    alert('Este email já está cadastrado.')
   })
 
   return(

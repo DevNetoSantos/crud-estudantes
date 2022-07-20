@@ -18,7 +18,7 @@ const handlerPut: NextApiHandler =  async (req, res) => {
   
   const updateUser = await api.getPutUser(name, city, email, parseInt(id as string))
   .catch(()=>{
-    res.json({error: 'Não foi possível alterar dados.'})
+    res.status(400).json({error: 'Não foi possível alterar dados.'})
   })
 
   if (updateUser) {

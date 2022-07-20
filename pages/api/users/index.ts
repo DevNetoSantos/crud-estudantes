@@ -8,7 +8,7 @@ const handlerPost: NextApiHandler = async (req, res) => {
 
   const newUser = await api.addUser(name, email, city)
   .catch((error) => {
-    res.json({error: 'Usuário ja existe.'})
+    res.status(400).json({error: 'Usuário ja existe.'})
   });
   
   if(newUser) {

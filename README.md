@@ -13,6 +13,7 @@ A aplicação consiste em um cadastro de pessoas, onde podermos fazer as seguint
 - nodejs
 - postgresql
 - typescript
+- prisma
 ## Front End
 - HTML / CSS / JS
 - NextS
@@ -27,6 +28,7 @@ Pré-requisitos:
 - Nextjs
 - nodejs
 - typescript
+- prisma
 
 ```bash
 # clonar repositório
@@ -37,6 +39,9 @@ cd crud-estudantes
 
 # instalar dependências
 npm install
+
+# adicionar a estrutura do banco de dados
+npx prisma db NomeDoBanco
 
 # executar o projeto
 npm run dev
